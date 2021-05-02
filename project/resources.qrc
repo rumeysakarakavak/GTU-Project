@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>images/background.PNG</file>
+        <file>images/computer.png</file>
+        <file>images/ip.png</file>
+        <file>images/langirt.PNG</file>
+        <file>images/logo.png</file>
+        <file>images/play-button.png</file>
+        <file>images/scores.png</file>
+        <file>images/stopp.png</file>
+        <file>images/struggle.png</file>
+        <file>images/team8.png</file>
+    </qresource>
+</RCC>
