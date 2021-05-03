@@ -9,12 +9,17 @@ class MoveItem : public QObject, public QGraphicsItem
 {
     Q_OBJECT
 public:
-    explicit MoveItem(int coordX,int coordY,int option,int number);
+    explicit MoveItem(int coordX,int coordY,int option,int number,int groupObject);
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
     ~MoveItem();
     int colorField;
     int optionShape;
+    int maxKatsayi;
+    int turn;
+    int conditionMax;
+    int flag;
+    int group;
 
 signals:
 

@@ -45,24 +45,24 @@ Dialog::Dialog(QWidget *parent)
     int ItemCount=1;
 
     for(int i =0;i<ItemCount;i++){
-        MoveItem *ball=new MoveItem(45,45,0,0);
-        MoveItem *rect11=new MoveItem(-127,-20,1,1);
-        MoveItem *rect12=new MoveItem(-127,40,1,2);
-        MoveItem *rect13=new MoveItem(-127,100,1,1);
+        MoveItem *ball=new MoveItem(45,45,0,0,0);
+        MoveItem *rect11=new MoveItem(-127,-20,1,1,0);
+        MoveItem *rect12=new MoveItem(-127,40,1,2,0);
+        MoveItem *rect13=new MoveItem(-127,100,1,1,0);
 
-        MoveItem *rect14=new MoveItem(88,-20,1,1);
-        MoveItem *rect15=new MoveItem(88,40,1,1);
-        MoveItem *rect16=new MoveItem(88,100,1,1);
+        MoveItem *rect14=new MoveItem(88,-20,1,1,1);
+        MoveItem *rect15=new MoveItem(88,40,1,1,1);
+        MoveItem *rect16=new MoveItem(88,100,1,1,1);
 
 
 
-        MoveItem *rect21=new MoveItem(218,-20,1,3);
-        MoveItem *rect22=new MoveItem(218,40,1,4);
-        MoveItem *rect23=new MoveItem(218,100,1,3);
+        MoveItem *rect21=new MoveItem(218,-20,1,3,0);
+        MoveItem *rect22=new MoveItem(218,40,1,4,0);
+        MoveItem *rect23=new MoveItem(218,100,1,3,0);
 
-        MoveItem *rect24=new MoveItem(-2,-20,1,3);
-        MoveItem *rect25=new MoveItem(-2,40,1,3);
-        MoveItem *rect26=new MoveItem(-2,100,1,3);
+        MoveItem *rect24=new MoveItem(-2,-20,1,3,1);
+        MoveItem *rect25=new MoveItem(-2,40,1,3,1);
+        MoveItem *rect26=new MoveItem(-2,100,1,3,1);
 
         scence->addItem(ball);
         scence->addItem(rect11);

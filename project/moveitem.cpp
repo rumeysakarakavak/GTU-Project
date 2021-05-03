@@ -1,9 +1,13 @@
 #include "moveitem.h"
 
-MoveItem::MoveItem(int coordX,int coordY,int option,int number)
+MoveItem::MoveItem(int coordX,int coordY,int option,int number,int groupObject)
 {
     speed=1;
-
+    turn=0;
+    maxKatsayi=1;
+    flag=0;
+    conditionMax=9;
+    group=groupObject;
     angle=(0);
     setRotation(angle);
     int StartX=coordX;
@@ -37,7 +41,58 @@ void MoveItem::advance(int phase)
     }
     QPointF location=this->pos();
     speed=speed*-1;
-    setPos(mapToParent(0,-(speed)));
+    if(optionShape==1){
+        if(group==0)
+            setPos(mapToParent(0,-(speed)));
+        else
+            setPos(mapToParent(0,-(speed)*6));
+    }
+    else{
+        setPos(mapToParent((maxKatsayi),0));
+        if(turn==0){
+            maxKatsayi+=1;
+        }
+        else{
+            maxKatsayi-=1;
+        }
+        if(maxKatsayi==conditionMax || maxKatsayi==(conditionMax*-1)){
+            if(turn==0 && maxKatsayi==conditionMax){
+                maxKatsayi=0;
+                turn=1;
+                if(flag==1){
+                    maxKatsayi=0;
+                    conditionMax=25;
+                }
+                printf("aaaa");
+            }
+            else if(turn==0 && maxKatsayi==(conditionMax*-1)){
+                maxKatsayi=0;
+                conditionMax=48;
+                turn=0;
+                printf("bbbb");
+            }
+            else if(turn==1 && maxKatsayi==conditionMax){
+                maxKatsayi=-9;
+                conditionMax=40;
+                turn=0;
+                printf("cccc");
+            }
+            else if(turn==1 && maxKatsayi==(conditionMax*-1)){
+                maxKatsayi=-9;
+                if(flag==1){
+                    conditionMax=27;
+                }
+                else{
+                    conditionMax=21;
+                }
+                turn=0;
+                flag=1;
+                printf("dddd");
+            }
+        }
+
+    }
+
 }
 
 QRectF MoveItem:: boundingRect() const
