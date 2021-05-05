@@ -1,4 +1,5 @@
 QT       += core gui
+QT       += printsupport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -41,3 +42,6 @@ DISTFILES += \
 
 RESOURCES += \
     resources.qrc
+
+OTHER_FILES += \
+    scores.json

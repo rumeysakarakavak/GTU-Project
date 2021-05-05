@@ -8,6 +8,15 @@
 #include <QDir>
 #include <QTextStream>
 #include <QTextStream>
+#include <QJsonDocument>
+#include <QJsonParseError>
+#include <QTextDocument>
+#include <QTextCursor>
+#include <QTextTableFormat>
+#include <QTextTableCell>
+#include <QFont>
+#include <QPrinter>
+#include <QDebug>
 
 ScoresDialog::ScoresDialog(QWidget *parent) :
     QDialog(parent),
@@ -29,20 +38,22 @@ void ScoresDialog:: readScoresAndPrintTable(){
 
     //open file for read
     //qDebug() << "App path : " << QDir::current().absolutePath() + "/scores.txt";
-    QString path = QDir::current().absolutePath() + "/scores.txt";
+    QString path = QDir::current().absolutePath() + "/scores.json";
+    //QString path = "/Users/mustafatokgoz/Desktop/proje/scores.json";
+
     QFile file(path);
-    if(!file.open(QIODevice::ReadWrite)) {
-        QMessageBox::information(0, "error", file.errorString());
+    if (!file.exists()) {       // Check to see if QFile found the file at given file_path
+        qDebug() << "NO FILE HERE";
     }
+    file.open(QIODevice::ReadOnly | QIODevice::Text);
 
-    QTextStream in(&file);
-    QStringList fields;
+    QJsonParseError jsonError;
+    QJsonDocument flowerJson = QJsonDocument::fromJson(file.readAll(),&jsonError);
+    if (jsonError.error != QJsonParseError::NoError){
+       qDebug() << jsonError.errorString();
+     }
+     QList<QVariant> list = flowerJson.toVariant().toList();
 
-    // read file and split
-    while(!in.atEnd()) {
-        QString line = in.readLine();
-        fields = line.split(",");
-    }
 
     // set table background
     QPalette palette = ui->scoreTable->palette();
@@ -50,7 +61,7 @@ void ScoresDialog:: readScoresAndPrintTable(){
     palette.setBrush(QPalette::Base, QBrush(jpgImage));
 
     // set table rows and columns
-    int rowCount = fields.count() / 2;
+    int rowCount = list.count();
     ui->scoreTable->setPalette( palette );
     ui->scoreTable->viewport()->setPalette( palette );
     ui->scoreTable->clear();
@@ -61,38 +72,115 @@ void ScoresDialog:: readScoresAndPrintTable(){
     QStringList s;
     s << "TEAM 8";
     s << "COMPUTER";
+    s << "DATE";
     ui->scoreTable->setHorizontalHeaderLabels(s);
 
-    // reverse scores end to begin
-    QStringList result;
-    result.reserve( fields.size() ); // reserve is new in Qt 4.7
-    std::reverse_copy( fields.begin(), fields.end(), std::back_inserter( result ) );
 
 
     // fill table items
-    int k = 0;
     for (int i=0; i<rowCount; i++){
-         for (int j=0; j<ui->scoreTable->columnCount(); j++){
-
-             QTableWidgetItem *item = ui->scoreTable->item(i, j);
+             QMap<QString, QVariant> map = list[i].toMap();
+             QTableWidgetItem *item = ui->scoreTable->item(i, 0);
              if(!item)
              {
                 item = new QTableWidgetItem();
-                ui->scoreTable->setItem(i, j, item);
+                ui->scoreTable->setItem(i, 0, item);
              }
-
              // set text properties
-             item->setText(result.at(k));
+             item->setText(map["human_score"].toString());
              item->setTextAlignment(Qt::AlignCenter);
              QFont font("Helvetica", 14, QFont::Bold);
              item->setFont(font);
              item->setForeground(QColor::fromRgb(255,255,255));
-             ++k;
 
-         }
+             QTableWidgetItem *item2 = ui->scoreTable->item(i, 1);
+             if(!item2)
+             {
+                item2 = new QTableWidgetItem();
+                ui->scoreTable->setItem(i, 1, item2);
+             }
+             // set text properties
+             item2->setText(map["robot_score"].toString());
+             item2->setTextAlignment(Qt::AlignCenter);
+             QFont font2("Helvetica", 14, QFont::Bold);
+             item2->setFont(font2);
+             item2->setForeground(QColor::fromRgb(255,255,255));
+
+             QTableWidgetItem *item3 = ui->scoreTable->item(i, 2);
+             if(!item3)
+             {
+                item3 = new QTableWidgetItem();
+                ui->scoreTable->setItem(i, 2, item3);
+             }
+             // set text properties
+             item3->setText(map["date"].toString());
+             item3->setTextAlignment(Qt::AlignCenter);
+             QFont font3("Helvetica", 14, QFont::Bold);
+             item2->setFont(font3);
+             item2->setForeground(QColor::fromRgb(255,255,255));
+
     }
-
-    //ui->lineEdit->setText(QString::number(fields.count()));
-
     file.close();
+
+}
+
+void ScoresDialog::on_down_clicked()
+{
+    QString path = QDir::current().absolutePath() + "/scores.json";
+    QFile file(path);
+    if (!file.exists()) {       // Check to see if QFile found the file at given file_path
+        qDebug() << "NO FILE HERE";
+    }
+    file.open(QIODevice::ReadOnly | QIODevice::Text);
+
+
+    QJsonParseError jsonError;
+    QJsonDocument flowerJson = QJsonDocument::fromJson(file.readAll(),&jsonError);
+    if (jsonError.error != QJsonParseError::NoError){
+       qDebug() << jsonError.errorString();
+     }
+     QList<QVariant> list = flowerJson.toVariant().toList();
+
+     QTextDocument *doc = new QTextDocument;
+     doc->setDocumentMargin(10);
+     QTextCursor cursor(doc);
+
+     cursor.movePosition(QTextCursor::Start);
+
+     QTextTable *table = cursor.insertTable(list.count() + 1, 3);
+     QTextTableCell headerCell = table->cellAt(0, 0);
+     QTextCursor headerCellCursor = headerCell.firstCursorPosition();
+     QTextCharFormat format;
+      format.setFontWeight(QFont::Bold);
+     headerCellCursor.insertText(QObject::tr("Team 8"),format);
+
+     headerCell = table->cellAt(0, 1);
+     headerCellCursor = headerCell.firstCursorPosition();
+     headerCellCursor.insertText(QObject::tr("Computer"), format);
+     headerCell = table->cellAt(0, 2);
+     headerCellCursor = headerCell.firstCursorPosition();
+     headerCellCursor.insertText(QObject::tr("Date"), format);
+
+
+     for(int i = 0; i < list.count(); i++){
+         QMap<QString, QVariant> map = list[i].toMap();
+         QTextTableCell cell = table->cellAt(i + 1, 0);
+         QTextCursor cellCursor = cell.firstCursorPosition();
+         cellCursor.insertText(map["human_score"].toString());
+
+         cell = table->cellAt(i + 1, 1);
+         cellCursor = cell.firstCursorPosition();
+         cellCursor.insertText(map["robot_score"].toString());
+         cell = table->cellAt(i + 1, 2);
+         cellCursor = cell.firstCursorPosition();
+         cellCursor.insertText(map["date"].toString());
+     }
+     QString fileName = QFileDialog::getSaveFileName((QWidget* )0, "Export PDF", QString(), "*.pdf");
+        if (QFileInfo(fileName).suffix().isEmpty()) { fileName.append(".pdf"); }
+     QPrinter printer(QPrinter::HighResolution);
+     printer.setOutputFormat(QPrinter::PdfFormat);
+     printer.setOutputFileName(fileName);
+     doc->print(&printer);
+
+     file.close();
 }

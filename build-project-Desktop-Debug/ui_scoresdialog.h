@@ -15,6 +15,7 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QTableWidget>
 
 QT_BEGIN_NAMESPACE
@@ -23,15 +24,16 @@ class Ui_ScoresDialog
 {
 public:
     QTableWidget *scoreTable;
+    QPushButton *down;
 
     void setupUi(QDialog *ScoresDialog)
     {
         if (ScoresDialog->objectName().isEmpty())
             ScoresDialog->setObjectName(QStringLiteral("ScoresDialog"));
-        ScoresDialog->resize(333, 551);
+        ScoresDialog->resize(520, 544);
         scoreTable = new QTableWidget(ScoresDialog);
-        if (scoreTable->columnCount() < 2)
-            scoreTable->setColumnCount(2);
+        if (scoreTable->columnCount() < 3)
+            scoreTable->setColumnCount(3);
         QFont font;
         font.setPointSize(14);
         font.setBold(true);
@@ -47,8 +49,11 @@ public:
         QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
         __qtablewidgetitem1->setFont(font1);
         scoreTable->setHorizontalHeaderItem(1, __qtablewidgetitem1);
+        QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
+        __qtablewidgetitem2->setFont(font);
+        scoreTable->setHorizontalHeaderItem(2, __qtablewidgetitem2);
         scoreTable->setObjectName(QStringLiteral("scoreTable"));
-        scoreTable->setGeometry(QRect(-10, 0, 351, 561));
+        scoreTable->setGeometry(QRect(0, 0, 531, 501));
         scoreTable->setFrameShape(QFrame::HLine);
         scoreTable->setLineWidth(4);
         scoreTable->setSizeAdjustPolicy(QAbstractScrollArea::AdjustIgnored);
@@ -68,6 +73,9 @@ public:
         scoreTable->verticalHeader()->setMinimumSectionSize(23);
         scoreTable->verticalHeader()->setProperty("showSortIndicator", QVariant(false));
         scoreTable->verticalHeader()->setStretchLastSection(false);
+        down = new QPushButton(ScoresDialog);
+        down->setObjectName(QStringLiteral("down"));
+        down->setGeometry(QRect(370, 500, 112, 32));
 
         retranslateUi(ScoresDialog);
 
@@ -81,6 +89,9 @@ public:
         ___qtablewidgetitem->setText(QApplication::translate("ScoresDialog", "TEAM 8", 0));
         QTableWidgetItem *___qtablewidgetitem1 = scoreTable->horizontalHeaderItem(1);
         ___qtablewidgetitem1->setText(QApplication::translate("ScoresDialog", "COMPUTER", 0));
+        QTableWidgetItem *___qtablewidgetitem2 = scoreTable->horizontalHeaderItem(2);
+        ___qtablewidgetitem2->setText(QApplication::translate("ScoresDialog", "DATE", 0));
+        down->setText(QApplication::translate("ScoresDialog", "Download", 0));
     } // retranslateUi
 
 };

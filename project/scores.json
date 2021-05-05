@@ -1,0 +1,67 @@
+[
+  {
+    "date":"01.02.2021 16:30",
+    "robot_score":2,
+    "human_score":3
+  },
+  {
+    "date":"02.02.2021 02:21",
+    "robot_score":3,
+    "human_score":4
+  },
+  {
+    "date":"03.02.2021 21:15",
+    "robot_score":4,
+    "human_score":4
+  },
+  {
+    "date":"04.02.2021 20:59",
+    "robot_score":5,
+    "human_score":4
+  },
+  {
+    "date":"04.02.2021 00:12",
+    "robot_score":7,
+    "human_score":6
+  },
+  {
+    "date":"06.02.2021 00:12",
+    "robot_score":2,
+    "human_score":3
+  },
+  {
+    "date":"03.02.2021 00:12",
+    "robot_score":4,
+    "human_score":4
+  },
+  {
+    "date":"04.02.2021 00:12",
+    "robot_score":5,
+    "human_score":4
+  },
+  {
+    "date":"04.02.2021 00:12",
+    "robot_score":7,
+    "human_score":6
+  },
+  {
+    "date":"03.02.2021 00:12",
+    "robot_score":4,
+    "human_score":4
+  },
+  {
+    "date":"04.02.2021 00:12",
+    "robot_score":5,
+    "human_score":4
+  },
+  {
+    "date":"04.02.2021 00:12",
+    "robot_score":7,
+    "human_score":6
+  },
+  {
+    "date":"03.02.2021 00:12",
+    "robot_score":1,
+    "human_score":2
+  }
+]

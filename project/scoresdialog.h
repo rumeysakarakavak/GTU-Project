@@ -15,6 +15,7 @@ public:
     explicit ScoresDialog(QWidget *parent = nullptr);
     ~ScoresDialog();
     void readScoresAndPrintTable();
+    void on_down_clicked();
 
 
 private:
