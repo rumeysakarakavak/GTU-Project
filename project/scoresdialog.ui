@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>520</width>
-    <height>544</height>
+    <width>549</width>
+    <height>553</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,11 +16,18 @@
   <widget class="QTableWidget" name="scoreTable">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>531</width>
+     <x>10</x>
+     <y>10</y>
+     <width>521</width>
      <height>501</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
    </property>
    <property name="frameShape">
     <enum>QFrame::HLine</enum>
@@ -43,14 +50,14 @@
    <attribute name="horizontalHeaderCascadingSectionResizes">
     <bool>false</bool>
    </attribute>
-   <attribute name="horizontalHeaderMinimumSectionSize">
-    <number>40</number>
-   </attribute>
    <attribute name="horizontalHeaderDefaultSectionSize">
     <number>171</number>
    </attribute>
    <attribute name="horizontalHeaderHighlightSections">
     <bool>true</bool>
+   </attribute>
+   <attribute name="horizontalHeaderMinimumSectionSize">
+    <number>40</number>
    </attribute>
    <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
     <bool>false</bool>
@@ -64,14 +71,14 @@
    <attribute name="verticalHeaderCascadingSectionResizes">
     <bool>false</bool>
    </attribute>
-   <attribute name="verticalHeaderMinimumSectionSize">
-    <number>23</number>
-   </attribute>
    <attribute name="verticalHeaderDefaultSectionSize">
     <number>50</number>
    </attribute>
    <attribute name="verticalHeaderHighlightSections">
     <bool>false</bool>
+   </attribute>
+   <attribute name="verticalHeaderMinimumSectionSize">
+    <number>23</number>
    </attribute>
    <attribute name="verticalHeaderShowSortIndicator" stdset="0">
     <bool>false</bool>
@@ -120,8 +127,8 @@
   <widget class="QPushButton" name="down">
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>500</y>
+     <x>420</x>
+     <y>520</y>
      <width>112</width>
      <height>32</height>
     </rect>

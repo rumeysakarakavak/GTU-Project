@@ -30,7 +30,7 @@ public:
     {
         if (ScoresDialog->objectName().isEmpty())
             ScoresDialog->setObjectName(QStringLiteral("ScoresDialog"));
-        ScoresDialog->resize(520, 544);
+        ScoresDialog->resize(549, 553);
         scoreTable = new QTableWidget(ScoresDialog);
         if (scoreTable->columnCount() < 3)
             scoreTable->setColumnCount(3);
@@ -53,7 +53,8 @@ public:
         __qtablewidgetitem2->setFont(font);
         scoreTable->setHorizontalHeaderItem(2, __qtablewidgetitem2);
         scoreTable->setObjectName(QStringLiteral("scoreTable"));
-        scoreTable->setGeometry(QRect(0, 0, 531, 501));
+        scoreTable->setGeometry(QRect(10, 10, 521, 501));
+        scoreTable->setFont(font);
         scoreTable->setFrameShape(QFrame::HLine);
         scoreTable->setLineWidth(4);
         scoreTable->setSizeAdjustPolicy(QAbstractScrollArea::AdjustIgnored);
@@ -75,7 +76,7 @@ public:
         scoreTable->verticalHeader()->setStretchLastSection(false);
         down = new QPushButton(ScoresDialog);
         down->setObjectName(QStringLiteral("down"));
-        down->setGeometry(QRect(370, 500, 112, 32));
+        down->setGeometry(QRect(420, 520, 112, 32));
 
         retranslateUi(ScoresDialog);
 

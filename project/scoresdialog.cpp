@@ -89,9 +89,9 @@ void ScoresDialog:: readScoresAndPrintTable(){
              // set text properties
              item->setText(map["human_score"].toString());
              item->setTextAlignment(Qt::AlignCenter);
-             QFont font("Helvetica", 14, QFont::Bold);
+             QFont font("Helvetica", 13, QFont::Bold);
              item->setFont(font);
-             item->setForeground(QColor::fromRgb(255,255,255));
+             item->setForeground(QColor::fromRgb(255,255,0));
 
              QTableWidgetItem *item2 = ui->scoreTable->item(i, 1);
              if(!item2)
@@ -102,9 +102,9 @@ void ScoresDialog:: readScoresAndPrintTable(){
              // set text properties
              item2->setText(map["robot_score"].toString());
              item2->setTextAlignment(Qt::AlignCenter);
-             QFont font2("Helvetica", 14, QFont::Bold);
+             QFont font2("Helvetica", 13, QFont::Bold);
              item2->setFont(font2);
-             item2->setForeground(QColor::fromRgb(255,255,255));
+             item2->setForeground(QColor::fromRgb(255,255,0));
 
              QTableWidgetItem *item3 = ui->scoreTable->item(i, 2);
              if(!item3)
@@ -115,17 +115,20 @@ void ScoresDialog:: readScoresAndPrintTable(){
              // set text properties
              item3->setText(map["date"].toString());
              item3->setTextAlignment(Qt::AlignCenter);
-             QFont font3("Helvetica", 14, QFont::Bold);
-             item2->setFont(font3);
-             item2->setForeground(QColor::fromRgb(255,255,255));
+             QFont font3("Helvetica", 13, QFont::Bold);
+             item3->setFont(font3);
+             item3->setForeground(QColor::fromRgb(255,255,0));
 
     }
     file.close();
 
 }
 
-void ScoresDialog::on_down_clicked()
+
+void ScoresDialog::on_down_clicked(bool checked)
 {
+    if(checked==true)
+        qDebug() << "cliked download";
     QString path = QDir::current().absolutePath() + "/scores.json";
     QFile file(path);
     if (!file.exists()) {       // Check to see if QFile found the file at given file_path
@@ -177,10 +180,10 @@ void ScoresDialog::on_down_clicked()
      }
      QString fileName = QFileDialog::getSaveFileName((QWidget* )0, "Export PDF", QString(), "*.pdf");
         if (QFileInfo(fileName).suffix().isEmpty()) { fileName.append(".pdf"); }
-     QPrinter printer(QPrinter::HighResolution);
+     QPrinter printer(QPrinter::ScreenResolution);
      printer.setOutputFormat(QPrinter::PdfFormat);
      printer.setOutputFileName(fileName);
      doc->print(&printer);
-
      file.close();
+
 }

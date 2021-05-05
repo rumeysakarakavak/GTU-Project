@@ -330,15 +330,15 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_resources.cpp
 qrc_resources.cpp: ../project/resources.qrc \
 		../project/images/stopp.png \
-		../project/images/langirt.PNG \
-		../project/images/computer.png \
-		../project/images/scores.png \
-		../project/images/struggle.png \
-		../project/images/ip.png \
 		../project/images/play-button.png \
+		../project/images/background.PNG \
+		../project/images/ip.png \
 		../project/images/logo.png \
 		../project/images/team8.png \
-		../project/images/background.PNG
+		../project/images/computer.png \
+		../project/images/langirt.PNG \
+		../project/images/scores.png \
+		../project/images/struggle.png
 	/usr/lib/i386-linux-gnu/qt5/bin/rcc -name resources ../project/resources.qrc -o qrc_resources.cpp
 
 compiler_moc_header_make_all: moc_mainwindow.cpp moc_scoresdialog.cpp moc_moveitem.cpp moc_renderarea.cpp
@@ -1665,6 +1665,35 @@ mainwindow.o: ../project/mainwindow.cpp ../project/mainwindow.h \
 		/usr/include/qt5/QtWidgets/qgraphicsscene.h \
 		/usr/include/qt5/QtWidgets/QWidget \
 		ui_mainwindow.h \
+		/usr/include/qt5/QtCore/QVariant \
+		/usr/include/qt5/QtWidgets/QAction \
+		/usr/include/qt5/QtWidgets/qaction.h \
+		/usr/include/qt5/QtWidgets/qactiongroup.h \
+		/usr/include/qt5/QtWidgets/QApplication \
+		/usr/include/qt5/QtWidgets/qapplication.h \
+		/usr/include/qt5/QtWidgets/qdesktopwidget.h \
+		/usr/include/qt5/QtWidgets/QButtonGroup \
+		/usr/include/qt5/QtWidgets/qbuttongroup.h \
+		/usr/include/qt5/QtWidgets/QCommandLinkButton \
+		/usr/include/qt5/QtWidgets/qcommandlinkbutton.h \
+		/usr/include/qt5/QtWidgets/qpushbutton.h \
+		/usr/include/qt5/QtWidgets/qabstractbutton.h \
+		/usr/include/qt5/QtWidgets/QGraphicsView \
+		/usr/include/qt5/QtWidgets/qgraphicsview.h \
+		/usr/include/qt5/QtWidgets/qscrollarea.h \
+		/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
+		/usr/include/qt5/QtWidgets/QHeaderView \
+		/usr/include/qt5/QtWidgets/qheaderview.h \
+		/usr/include/qt5/QtWidgets/qabstractitemview.h \
+		/usr/include/qt5/QtWidgets/QLCDNumber \
+		/usr/include/qt5/QtWidgets/qlcdnumber.h \
+		/usr/include/qt5/QtWidgets/QLabel \
+		/usr/include/qt5/QtWidgets/qlabel.h \
+		/usr/include/qt5/QtWidgets/QMenuBar \
+		/usr/include/qt5/QtWidgets/qmenubar.h \
+		/usr/include/qt5/QtWidgets/qmenu.h \
+		/usr/include/qt5/QtWidgets/QStatusBar \
+		/usr/include/qt5/QtWidgets/qstatusbar.h \
 		../project/moveitem.h \
 		/usr/include/qt5/QtWidgets/QGraphicsItem \
 		/usr/include/qt5/QtWidgets/qgraphicsitem.h \
@@ -1713,15 +1742,10 @@ mainwindow.o: ../project/mainwindow.cpp ../project/mainwindow.h \
 		/usr/include/qt5/QtWidgets/qgraphicstransform.h \
 		/usr/include/qt5/QtGui/QVector3D \
 		/usr/include/qt5/QtGui/QMatrix4x4 \
-		/usr/include/qt5/QtWidgets/qgraphicsview.h \
-		/usr/include/qt5/QtWidgets/qscrollarea.h \
-		/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
-		/usr/include/qt5/QtWidgets/qabstractitemview.h \
 		/usr/include/qt5/QtWidgets/qcolumnview.h \
 		/usr/include/qt5/QtWidgets/qdatawidgetmapper.h \
 		/usr/include/qt5/QtWidgets/qdirmodel.h \
 		/usr/include/qt5/QtWidgets/qfileiconprovider.h \
-		/usr/include/qt5/QtWidgets/qheaderview.h \
 		/usr/include/qt5/QtWidgets/qitemdelegate.h \
 		/usr/include/qt5/QtWidgets/qitemeditorfactory.h \
 		/usr/include/qt5/QtWidgets/qlistview.h \
@@ -1732,10 +1756,6 @@ mainwindow.o: ../project/mainwindow.cpp ../project/mainwindow.h \
 		/usr/include/qt5/QtWidgets/qtreeview.h \
 		/usr/include/qt5/QtWidgets/qtreewidget.h \
 		/usr/include/qt5/QtWidgets/qtreewidgetitemiterator.h \
-		/usr/include/qt5/QtWidgets/qaction.h \
-		/usr/include/qt5/QtWidgets/qactiongroup.h \
-		/usr/include/qt5/QtWidgets/qapplication.h \
-		/usr/include/qt5/QtWidgets/qdesktopwidget.h \
 		/usr/include/qt5/QtWidgets/qformlayout.h \
 		/usr/include/qt5/QtWidgets/qgesture.h \
 		/usr/include/qt5/QtWidgets/qgesturerecognizer.h \
@@ -1760,17 +1780,12 @@ mainwindow.o: ../project/mainwindow.cpp ../project/mainwindow.h \
 		/usr/include/qt5/QtWidgets/QScrollerProperties \
 		/usr/include/qt5/QtWidgets/qscrollerproperties.h \
 		/usr/include/qt5/QtCore/QMetaType \
-		/usr/include/qt5/QtCore/QVariant \
 		/usr/include/qt5/QtWidgets/qsystemtrayicon.h \
 		/usr/include/qt5/QtWidgets/qundogroup.h \
 		/usr/include/qt5/QtWidgets/qundostack.h \
 		/usr/include/qt5/QtWidgets/qundoview.h \
-		/usr/include/qt5/QtWidgets/qabstractbutton.h \
-		/usr/include/qt5/QtWidgets/qbuttongroup.h \
 		/usr/include/qt5/QtWidgets/qcalendarwidget.h \
 		/usr/include/qt5/QtWidgets/qcheckbox.h \
-		/usr/include/qt5/QtWidgets/qcommandlinkbutton.h \
-		/usr/include/qt5/QtWidgets/qpushbutton.h \
 		/usr/include/qt5/QtWidgets/qdatetimeedit.h \
 		/usr/include/qt5/QtWidgets/qdial.h \
 		/usr/include/qt5/QtWidgets/qdialogbuttonbox.h \
@@ -1779,12 +1794,8 @@ mainwindow.o: ../project/mainwindow.cpp ../project/mainwindow.h \
 		/usr/include/qt5/QtWidgets/qfontcombobox.h \
 		/usr/include/qt5/QtWidgets/qgroupbox.h \
 		/usr/include/qt5/QtWidgets/qkeysequenceedit.h \
-		/usr/include/qt5/QtWidgets/qlabel.h \
-		/usr/include/qt5/QtWidgets/qlcdnumber.h \
 		/usr/include/qt5/QtWidgets/qmdiarea.h \
 		/usr/include/qt5/QtWidgets/qmdisubwindow.h \
-		/usr/include/qt5/QtWidgets/qmenu.h \
-		/usr/include/qt5/QtWidgets/qmenubar.h \
 		/usr/include/qt5/QtWidgets/qplaintextedit.h \
 		/usr/include/qt5/QtWidgets/qtextedit.h \
 		/usr/include/qt5/QtWidgets/qprogressbar.h \
@@ -1795,7 +1806,6 @@ mainwindow.o: ../project/mainwindow.cpp ../project/mainwindow.h \
 		/usr/include/qt5/QtWidgets/qsplashscreen.h \
 		/usr/include/qt5/QtWidgets/qsplitter.h \
 		/usr/include/qt5/QtWidgets/qstackedwidget.h \
-		/usr/include/qt5/QtWidgets/qstatusbar.h \
 		/usr/include/qt5/QtWidgets/qtextbrowser.h \
 		/usr/include/qt5/QtWidgets/qtoolbar.h \
 		/usr/include/qt5/QtWidgets/qtoolbox.h \
@@ -1915,9 +1925,22 @@ scoresdialog.o: ../project/scoresdialog.cpp ../project/scoresdialog.h \
 		/usr/include/qt5/QtGui/qvector2d.h \
 		/usr/include/qt5/QtGui/qtouchdevice.h \
 		ui_scoresdialog.h \
-		/usr/include/qt5/QtWidgets/QTableWidget \
-		/usr/include/qt5/QtWidgets/qtablewidget.h \
-		/usr/include/qt5/QtWidgets/qtableview.h \
+		/usr/include/qt5/QtCore/QVariant \
+		/usr/include/qt5/QtWidgets/QAction \
+		/usr/include/qt5/QtWidgets/qaction.h \
+		/usr/include/qt5/QtGui/qicon.h \
+		/usr/include/qt5/QtWidgets/qactiongroup.h \
+		/usr/include/qt5/QtWidgets/QApplication \
+		/usr/include/qt5/QtWidgets/qapplication.h \
+		/usr/include/qt5/QtCore/qcoreapplication.h \
+		/usr/include/qt5/QtCore/qeventloop.h \
+		/usr/include/qt5/QtWidgets/qdesktopwidget.h \
+		/usr/include/qt5/QtGui/qguiapplication.h \
+		/usr/include/qt5/QtGui/qinputmethod.h \
+		/usr/include/qt5/QtWidgets/QButtonGroup \
+		/usr/include/qt5/QtWidgets/qbuttongroup.h \
+		/usr/include/qt5/QtWidgets/QHeaderView \
+		/usr/include/qt5/QtWidgets/qheaderview.h \
 		/usr/include/qt5/QtWidgets/qabstractitemview.h \
 		/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
 		/usr/include/qt5/QtWidgets/qframe.h \
@@ -1928,13 +1951,18 @@ scoresdialog.o: ../project/scoresdialog.cpp ../project/scoresdialog.h \
 		/usr/include/qt5/QtWidgets/qabstractspinbox.h \
 		/usr/include/qt5/QtGui/qvalidator.h \
 		/usr/include/qt5/QtCore/qregularexpression.h \
-		/usr/include/qt5/QtGui/qicon.h \
 		/usr/include/qt5/QtWidgets/qslider.h \
 		/usr/include/qt5/QtWidgets/qabstractslider.h \
 		/usr/include/qt5/QtWidgets/qstyle.h \
 		/usr/include/qt5/QtWidgets/qtabbar.h \
 		/usr/include/qt5/QtWidgets/qtabwidget.h \
 		/usr/include/qt5/QtWidgets/qrubberband.h \
+		/usr/include/qt5/QtWidgets/QPushButton \
+		/usr/include/qt5/QtWidgets/qpushbutton.h \
+		/usr/include/qt5/QtWidgets/qabstractbutton.h \
+		/usr/include/qt5/QtWidgets/QTableWidget \
+		/usr/include/qt5/QtWidgets/qtablewidget.h \
+		/usr/include/qt5/QtWidgets/qtableview.h \
 		/usr/include/qt5/QtWidgets/QTableWidgetItem \
 		/usr/include/qt5/QtCore/QFile \
 		/usr/include/qt5/QtWidgets/QMessageBox \
