@@ -180,6 +180,7 @@ Makefile: ../project/project.pro C:/Qt/6.0.3/mingw81_64/mkspecs/win32-g++/qmake.
 		C:/Qt/6.0.3/mingw81_64/mkspecs/features/yacc.prf \
 		C:/Qt/6.0.3/mingw81_64/mkspecs/features/lex.prf \
 		../project/project.pro \
+		C:/Qt/6.0.3/mingw81_64/lib/Qt6PrintSupport.prl \
 		C:/Qt/6.0.3/mingw81_64/lib/Qt6Widgets.prl \
 		C:/Qt/6.0.3/mingw81_64/lib/Qt6Gui.prl \
 		C:/Qt/6.0.3/mingw81_64/lib/Qt6Core.prl \
@@ -297,6 +298,7 @@ C:/Qt/6.0.3/mingw81_64/mkspecs/features/exceptions.prf:
 C:/Qt/6.0.3/mingw81_64/mkspecs/features/yacc.prf:
 C:/Qt/6.0.3/mingw81_64/mkspecs/features/lex.prf:
 ../project/project.pro:
+C:/Qt/6.0.3/mingw81_64/lib/Qt6PrintSupport.prl:
 C:/Qt/6.0.3/mingw81_64/lib/Qt6Widgets.prl:
 C:/Qt/6.0.3/mingw81_64/lib/Qt6Gui.prl:
 C:/Qt/6.0.3/mingw81_64/lib/Qt6Core.prl:

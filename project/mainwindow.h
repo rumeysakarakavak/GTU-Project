@@ -4,9 +4,23 @@
 #include <QMainWindow>
 #include <QComboBox>
 
+//#include <QDialog>
+#include <QtCore>
+#include <QtGui>
+#include <QGraphicsScene>
+#include <QWidget>
+
+
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
+//QT_END_NAMESPACE
+class QCheckBox;
+class QComboBox;
+class QLabel;
+class QSpinBox;
 QT_END_NAMESPACE
+class RenderArea;
 
 class MainWindow : public QMainWindow
 {
@@ -43,5 +57,9 @@ private:
     int computerScore;
     int teamScore;
     int level;
+    QGraphicsScene *scence;
+    QTimer *timer;
+    RenderArea *renderArea;
+
 };
 #endif // MAINWINDOW_H

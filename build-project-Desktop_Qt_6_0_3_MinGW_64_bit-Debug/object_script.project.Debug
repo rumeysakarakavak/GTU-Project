@@ -1,0 +1,10 @@
+debug/main.o
+debug/mainwindow.o
+debug/scoresdialog.o
+debug/moveitem.o
+debug/renderarea.o
+debug/qrc_resources.o
+debug/moc_mainwindow.o
+debug/moc_scoresdialog.o
+debug/moc_moveitem.o
+debug/moc_renderarea.o

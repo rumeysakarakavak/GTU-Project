@@ -72,31 +72,6 @@
      </size>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>380</x>
-      <y>160</y>
-      <width>471</width>
-      <height>331</height>
-     </rect>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap resource="resources.qrc">:/images/images/langirt.PNG</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-   </widget>
    <widget class="QComboBox" name="level">
     <property name="geometry">
      <rect>
@@ -259,17 +234,16 @@
      </size>
     </property>
    </widget>
-   <zorder>startButton</zorder>
-   <zorder>stopButton</zorder>
-   <zorder>level</zorder>
-   <zorder>label_2</zorder>
-   <zorder>label_3</zorder>
-   <zorder>label_4</zorder>
-   <zorder>teamScoreLabel</zorder>
-   <zorder>computerScoreLabel</zorder>
-   <zorder>label</zorder>
-   <zorder>levelimage</zorder>
-   <zorder>scoresButton</zorder>
+   <widget class="QGraphicsView" name="graphicsView">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>170</y>
+      <width>491</width>
+      <height>281</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -277,7 +251,7 @@
      <x>0</x>
      <y>0</y>
      <width>1800</width>
-     <height>25</height>
+     <height>31</height>
     </rect>
    </property>
   </widget>

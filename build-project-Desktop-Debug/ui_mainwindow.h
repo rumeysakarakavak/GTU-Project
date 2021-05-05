@@ -15,6 +15,7 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QCommandLinkButton>
+#include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLCDNumber>
 #include <QtWidgets/QLabel>
@@ -31,7 +32,6 @@ public:
     QWidget *centralwidget;
     QCommandLinkButton *startButton;
     QCommandLinkButton *stopButton;
-    QLabel *label;
     QComboBox *level;
     QLabel *label_2;
     QLabel *label_3;
@@ -40,6 +40,7 @@ public:
     QLCDNumber *computerScoreLabel;
     QLabel *levelimage;
     QCommandLinkButton *scoresButton;
+    QGraphicsView *graphicsView;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -67,13 +68,6 @@ public:
         icon1.addFile(QStringLiteral(":/images/images/stopp.png"), QSize(), QIcon::Normal, QIcon::Off);
         stopButton->setIcon(icon1);
         stopButton->setIconSize(QSize(70, 70));
-        label = new QLabel(centralwidget);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(380, 160, 471, 331));
-        label->setAutoFillBackground(false);
-        label->setFrameShape(QFrame::NoFrame);
-        label->setPixmap(QPixmap(QString::fromUtf8(":/images/images/langirt.PNG")));
-        label->setScaledContents(true);
         level = new QComboBox(centralwidget);
         level->setObjectName(QStringLiteral("level"));
         level->setGeometry(QRect(410, 590, 69, 21));
@@ -120,21 +114,13 @@ public:
         icon2.addFile(QStringLiteral(":/images/images/scores.png"), QSize(), QIcon::Normal, QIcon::Off);
         scoresButton->setIcon(icon2);
         scoresButton->setIconSize(QSize(60, 60));
+        graphicsView = new QGraphicsView(centralwidget);
+        graphicsView->setObjectName(QStringLiteral("graphicsView"));
+        graphicsView->setGeometry(QRect(380, 170, 491, 281));
         MainWindow->setCentralWidget(centralwidget);
-        startButton->raise();
-        stopButton->raise();
-        level->raise();
-        label_2->raise();
-        label_3->raise();
-        label_4->raise();
-        teamScoreLabel->raise();
-        computerScoreLabel->raise();
-        label->raise();
-        levelimage->raise();
-        scoresButton->raise();
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1800, 25));
+        menubar->setGeometry(QRect(0, 0, 1800, 31));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QStringLiteral("statusbar"));
@@ -150,7 +136,6 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
         startButton->setText(QString());
         stopButton->setText(QString());
-        label->setText(QString());
         label_2->setText(QString());
         label_3->setText(QString());
         label_4->setText(QString());

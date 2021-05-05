@@ -13,21 +13,18 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     scoresdialog.cpp \
-    dialog.cpp \
     moveitem.cpp \
     renderarea.cpp
 
 HEADERS += \
     mainwindow.h \
     scoresdialog.h \
-    dialog.h \
     moveitem.h \
     renderarea.h
 
 FORMS += \
     mainwindow.ui \
-    scoresdialog.ui \
-    dialog.ui
+    scoresdialog.ui
 
 TRANSLATIONS += \
     project_en_US.ts
