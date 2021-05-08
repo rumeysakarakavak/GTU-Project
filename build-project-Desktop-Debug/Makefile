@@ -12,13 +12,13 @@ MAKEFILE      = Makefile
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIE $(DEFINES)
 CXXFLAGS      = -pipe -g -std=c++0x -Wall -W -D_REENTRANT -fPIE $(DEFINES)
-INCPATH       = -I/usr/lib/i386-linux-gnu/qt5/mkspecs/linux-g++ -I../project -I/usr/include/qt5 -I/usr/include/qt5/QtPrintSupport -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I. -I.
+INCPATH       = -I/usr/lib/i386-linux-gnu/qt5/mkspecs/linux-g++ -I../project -I/usr/include/qt5 -I/usr/include/qt5/QtPrintSupport -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtNetwork -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I. -I.
 LINK          = g++
 LFLAGS        = 
-LIBS          = $(SUBLIBS) -lQt5PrintSupport -L/usr/lib/i386-linux-gnu -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
+LIBS          = $(SUBLIBS) -lQt5PrintSupport -L/usr/lib/i386-linux-gnu -lQt5Widgets -lQt5Network -lQt5Gui -lQt5Core -lGL -lpthread 
 AR            = ar cqs
 RANLIB        = 
 QMAKE         = /usr/lib/i386-linux-gnu/qt5/bin/qmake
@@ -228,7 +228,8 @@ Makefile: ../project/project.pro /usr/lib/i386-linux-gnu/qt5/mkspecs/linux-g++/q
 		/usr/lib/i386-linux-gnu/libQt5PrintSupport.prl \
 		/usr/lib/i386-linux-gnu/libQt5Widgets.prl \
 		/usr/lib/i386-linux-gnu/libQt5Gui.prl \
-		/usr/lib/i386-linux-gnu/libQt5Core.prl
+		/usr/lib/i386-linux-gnu/libQt5Core.prl \
+		/usr/lib/i386-linux-gnu/libQt5Network.prl
 	$(QMAKE) -spec linux-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ../project/project.pro
 /usr/lib/i386-linux-gnu/qt5/mkspecs/features/spec_pre.prf:
 /usr/lib/i386-linux-gnu/qt5/mkspecs/common/shell-unix.conf:
@@ -297,6 +298,7 @@ Makefile: ../project/project.pro /usr/lib/i386-linux-gnu/qt5/mkspecs/linux-g++/q
 /usr/lib/i386-linux-gnu/libQt5Widgets.prl:
 /usr/lib/i386-linux-gnu/libQt5Gui.prl:
 /usr/lib/i386-linux-gnu/libQt5Core.prl:
+/usr/lib/i386-linux-gnu/libQt5Network.prl:
 qmake: FORCE
 	@$(QMAKE) -spec linux-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ../project/project.pro
 
@@ -329,16 +331,17 @@ compiler_rcc_make_all: qrc_resources.cpp
 compiler_rcc_clean:
 	-$(DEL_FILE) qrc_resources.cpp
 qrc_resources.cpp: ../project/resources.qrc \
-		../project/images/stopp.png \
 		../project/images/play-button.png \
 		../project/images/background.PNG \
-		../project/images/ip.png \
-		../project/images/logo.png \
-		../project/images/team8.png \
+		../project/images/stopp.png \
 		../project/images/computer.png \
-		../project/images/langirt.PNG \
+		../project/images/struggle.png \
+		../project/images/logo.png \
+		../project/images/pause-icon.png \
 		../project/images/scores.png \
-		../project/images/struggle.png
+		../project/images/langirt.PNG \
+		../project/images/team8.png \
+		../project/images/ip.png
 	/usr/lib/i386-linux-gnu/qt5/bin/rcc -name resources ../project/resources.qrc -o qrc_resources.cpp
 
 compiler_moc_header_make_all: moc_mainwindow.cpp moc_scoresdialog.cpp moc_moveitem.cpp moc_renderarea.cpp
@@ -663,6 +666,12 @@ moc_mainwindow.cpp: /usr/include/qt5/QtWidgets/QMainWindow \
 		/usr/include/qt5/QtWidgets/QGraphicsScene \
 		/usr/include/qt5/QtWidgets/qgraphicsscene.h \
 		/usr/include/qt5/QtWidgets/QWidget \
+		/usr/include/qt5/QtNetwork/QTcpSocket \
+		/usr/include/qt5/QtNetwork/qtcpsocket.h \
+		/usr/include/qt5/QtNetwork/qabstractsocket.h \
+		/usr/include/qt5/QtCore/QDebug \
+		/usr/include/qt5/QtNetwork/QHostAddress \
+		/usr/include/qt5/QtNetwork/qhostaddress.h \
 		../project/mainwindow.h
 	/usr/lib/i386-linux-gnu/qt5/bin/moc $(DEFINES) $(INCPATH) -I/usr/include/c++/4.8 -I/usr/include/i386-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/i686-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/i686-linux-gnu/4.8/include-fixed -I/usr/include/i386-linux-gnu -I/usr/include ../project/mainwindow.h -o moc_mainwindow.cpp
 
@@ -1339,6 +1348,12 @@ main.o: ../project/main.cpp ../project/mainwindow.h \
 		/usr/include/qt5/QtWidgets/QGraphicsScene \
 		/usr/include/qt5/QtWidgets/qgraphicsscene.h \
 		/usr/include/qt5/QtWidgets/QWidget \
+		/usr/include/qt5/QtNetwork/QTcpSocket \
+		/usr/include/qt5/QtNetwork/qtcpsocket.h \
+		/usr/include/qt5/QtNetwork/qabstractsocket.h \
+		/usr/include/qt5/QtCore/QDebug \
+		/usr/include/qt5/QtNetwork/QHostAddress \
+		/usr/include/qt5/QtNetwork/qhostaddress.h \
 		/usr/include/qt5/QtWidgets/QApplication \
 		/usr/include/qt5/QtWidgets/qapplication.h \
 		/usr/include/qt5/QtWidgets/qdesktopwidget.h
@@ -1664,6 +1679,12 @@ mainwindow.o: ../project/mainwindow.cpp ../project/mainwindow.h \
 		/usr/include/qt5/QtWidgets/QGraphicsScene \
 		/usr/include/qt5/QtWidgets/qgraphicsscene.h \
 		/usr/include/qt5/QtWidgets/QWidget \
+		/usr/include/qt5/QtNetwork/QTcpSocket \
+		/usr/include/qt5/QtNetwork/qtcpsocket.h \
+		/usr/include/qt5/QtNetwork/qabstractsocket.h \
+		/usr/include/qt5/QtCore/QDebug \
+		/usr/include/qt5/QtNetwork/QHostAddress \
+		/usr/include/qt5/QtNetwork/qhostaddress.h \
 		ui_mainwindow.h \
 		/usr/include/qt5/QtCore/QVariant \
 		/usr/include/qt5/QtWidgets/QAction \

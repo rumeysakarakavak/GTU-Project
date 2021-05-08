@@ -9,6 +9,10 @@
 #include <QtGui>
 #include <QGraphicsScene>
 #include <QWidget>
+#include <QObject>
+#include <QTcpSocket>
+#include <QDebug>
+#include <QHostAddress>
 
 
 
@@ -44,13 +48,16 @@ public:
 
 
 private slots:
-    void on_startButton_clicked();
 
     void on_stopButton_clicked();
 
     void on_level_currentIndexChanged(int index);
 
     void on_scoresButton_clicked();
+
+    void Connect();
+
+    void on_startButton_toggled(bool checked);
 
 private:
     Ui::MainWindow *ui;
@@ -60,6 +67,8 @@ private:
     QGraphicsScene *scence;
     QTimer *timer;
     RenderArea *renderArea;
+    QTcpSocket *socket;
+    QString command;
 
 };
 #endif // MAINWINDOW_H

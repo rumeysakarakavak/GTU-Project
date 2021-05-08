@@ -29,6 +29,11 @@ MainWindow::MainWindow(QWidget *parent)
     selectLevel(ui->level);
     this->setStyleSheet("background-color: #6fc666;");
 
+    ui->startButton->setIcon(QIcon(":/images/images/play-button.png"));
+    ui->startButton->setCheckable(true);
+    socket = new QTcpSocket(this);
+    socket->connectToHost(QHostAddress("127.0.0.1"), 5051);
+
     scence = new QGraphicsScene(this);
     ui->graphicsView->setScene(scence);
     ui->graphicsView->setRenderHint(QPainter::Antialiasing);
@@ -178,7 +183,7 @@ void MainWindow:: selectLevel(QComboBox *level){
 }*/
 
 
-void MainWindow::on_startButton_clicked()
+/*void MainWindow::on_startButton_clicked()
 {
     // start game
 
@@ -204,13 +209,8 @@ void MainWindow::on_startButton_clicked()
 //    dialog.setModal(true);
 //    dialog.exec();
 
-}
+//}
 
-void MainWindow::on_stopButton_clicked()
-{
-        writeFileScores(getTeamScore(), getComputerScore());
-
-}
 
 void MainWindow::on_level_currentIndexChanged(int index)
 {
@@ -244,4 +244,57 @@ void MainWindow::on_scoresButton_clicked()
     ScoresDialog scores;
     scores.setModal(true);
     scores.exec();
+}
+
+void MainWindow ::Connect() {
+    if(socket->waitForConnected()) {
+           socket->write(this->command.toUtf8().constData());
+           socket->waitForBytesWritten();
+
+           /*
+           // add if client reads from server
+           socket->waitForReadyRead(3000);
+           //qDebug() << "Reading from server: " << socket->bytesAvailable();
+           //qDebug() << socket->readAll();*/
+
+       }
+}
+
+
+/*void MainWindow::on_startButton_toggled(bool checked)
+{
+    if(checked) {
+        ui->startButton->setIcon(QIcon(":/images/pause-icon.png"));
+        this->command = "SYSTEM_START";
+    }
+    else {
+        ui->startButton->setIcon(QIcon(":/images/play-button.png"));
+        this->command = "SYSTEM_RESUME";
+    }
+    this->Connect();
+}
+*/
+void MainWindow::on_stopButton_clicked()
+{
+    this->command = "STOP";
+    this->Connect();
+    socket->close();
+    //this->close();
+}
+
+
+
+void MainWindow::on_startButton_toggled(bool checked)
+{
+    if(checked) {
+        ui->startButton->setIcon(QIcon(":/images/images/pause-icon.png"));
+        this->command = "START";
+    }
+    else {
+        ui->startButton->setIcon(QIcon(":/images/images/play-button.png"));
+        this->command = "RESUME";
+    }
+    this->Connect();
+
+
 }

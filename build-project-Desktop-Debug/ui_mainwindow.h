@@ -30,7 +30,6 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QCommandLinkButton *startButton;
     QCommandLinkButton *stopButton;
     QComboBox *level;
     QLabel *label_2;
@@ -41,6 +40,7 @@ public:
     QLabel *levelimage;
     QCommandLinkButton *scoresButton;
     QGraphicsView *graphicsView;
+    QCommandLinkButton *startButton;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -54,23 +54,16 @@ public:
         MainWindow->setAnimated(false);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
-        startButton = new QCommandLinkButton(centralwidget);
-        startButton->setObjectName(QStringLiteral("startButton"));
-        startButton->setGeometry(QRect(520, 510, 81, 81));
-        QIcon icon;
-        icon.addFile(QStringLiteral(":/images/images/play-button.png"), QSize(), QIcon::Normal, QIcon::Off);
-        startButton->setIcon(icon);
-        startButton->setIconSize(QSize(60, 60));
         stopButton = new QCommandLinkButton(centralwidget);
         stopButton->setObjectName(QStringLiteral("stopButton"));
         stopButton->setGeometry(QRect(620, 510, 81, 81));
-        QIcon icon1;
-        icon1.addFile(QStringLiteral(":/images/images/stopp.png"), QSize(), QIcon::Normal, QIcon::Off);
-        stopButton->setIcon(icon1);
+        QIcon icon;
+        icon.addFile(QStringLiteral(":/images/images/stopp.png"), QSize(), QIcon::Normal, QIcon::Off);
+        stopButton->setIcon(icon);
         stopButton->setIconSize(QSize(70, 70));
         level = new QComboBox(centralwidget);
         level->setObjectName(QStringLiteral("level"));
-        level->setGeometry(QRect(410, 590, 69, 21));
+        level->setGeometry(QRect(400, 590, 91, 21));
         level->setAutoFillBackground(false);
         level->setFrame(true);
         label_2 = new QLabel(centralwidget);
@@ -110,17 +103,25 @@ public:
         scoresButton = new QCommandLinkButton(centralwidget);
         scoresButton->setObjectName(QStringLiteral("scoresButton"));
         scoresButton->setGeometry(QRect(740, 510, 81, 81));
-        QIcon icon2;
-        icon2.addFile(QStringLiteral(":/images/images/scores.png"), QSize(), QIcon::Normal, QIcon::Off);
-        scoresButton->setIcon(icon2);
+        QIcon icon1;
+        icon1.addFile(QStringLiteral(":/images/images/scores.png"), QSize(), QIcon::Normal, QIcon::Off);
+        scoresButton->setIcon(icon1);
         scoresButton->setIconSize(QSize(60, 60));
         graphicsView = new QGraphicsView(centralwidget);
         graphicsView->setObjectName(QStringLiteral("graphicsView"));
         graphicsView->setGeometry(QRect(380, 170, 491, 281));
+        startButton = new QCommandLinkButton(centralwidget);
+        startButton->setObjectName(QStringLiteral("startButton"));
+        startButton->setGeometry(QRect(510, 520, 71, 81));
+        QIcon icon2;
+        icon2.addFile(QStringLiteral(":/images/images/play-button.png"), QSize(), QIcon::Selected, QIcon::Off);
+        icon2.addFile(QStringLiteral(":/images/images/pause-icon.png"), QSize(), QIcon::Selected, QIcon::On);
+        startButton->setIcon(icon2);
+        startButton->setIconSize(QSize(60, 60));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1800, 31));
+        menubar->setGeometry(QRect(0, 0, 1800, 25));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QStringLiteral("statusbar"));
@@ -134,13 +135,13 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
-        startButton->setText(QString());
         stopButton->setText(QString());
         label_2->setText(QString());
         label_3->setText(QString());
         label_4->setText(QString());
         levelimage->setText(QString());
         scoresButton->setText(QString());
+        startButton->setText(QString());
     } // retranslateUi
 
 };

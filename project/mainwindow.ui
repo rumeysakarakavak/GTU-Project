@@ -26,29 +26,6 @@
    <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QCommandLinkButton" name="startButton">
-    <property name="geometry">
-     <rect>
-      <x>520</x>
-      <y>510</y>
-      <width>81</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset resource="resources.qrc">
-      <normaloff>:/images/images/play-button.png</normaloff>:/images/images/play-button.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>60</width>
-      <height>60</height>
-     </size>
-    </property>
-   </widget>
    <widget class="QCommandLinkButton" name="stopButton">
     <property name="geometry">
      <rect>
@@ -75,9 +52,9 @@
    <widget class="QComboBox" name="level">
     <property name="geometry">
      <rect>
-      <x>410</x>
+      <x>400</x>
       <y>590</y>
-      <width>69</width>
+      <width>91</width>
       <height>21</height>
      </rect>
     </property>
@@ -244,6 +221,31 @@
      </rect>
     </property>
    </widget>
+   <widget class="QCommandLinkButton" name="startButton">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>520</y>
+      <width>71</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <selectedoff>:/images/images/play-button.png</selectedoff>
+      <selectedon>:/images/images/pause-icon.png</selectedon>
+     </iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>60</width>
+      <height>60</height>
+     </size>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -251,7 +253,7 @@
      <x>0</x>
      <y>0</y>
      <width>1800</width>
-     <height>31</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>

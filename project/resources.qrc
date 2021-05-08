@@ -10,5 +10,6 @@
         <file>images/stopp.png</file>
         <file>images/struggle.png</file>
         <file>images/team8.png</file>
+        <file>images/pause-icon.png</file>
     </qresource>
 </RCC>
