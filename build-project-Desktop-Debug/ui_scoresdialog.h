@@ -31,6 +31,7 @@ public:
         if (ScoresDialog->objectName().isEmpty())
             ScoresDialog->setObjectName(QStringLiteral("ScoresDialog"));
         ScoresDialog->resize(549, 553);
+        ScoresDialog->setStyleSheet(QStringLiteral(""));
         scoreTable = new QTableWidget(ScoresDialog);
         if (scoreTable->columnCount() < 3)
             scoreTable->setColumnCount(3);
@@ -54,8 +55,14 @@ public:
         scoreTable->setHorizontalHeaderItem(2, __qtablewidgetitem2);
         scoreTable->setObjectName(QStringLiteral("scoreTable"));
         scoreTable->setGeometry(QRect(10, 10, 521, 501));
-        scoreTable->setFont(font);
-        scoreTable->setFrameShape(QFrame::HLine);
+        QFont font2;
+        font2.setPointSize(14);
+        font2.setBold(true);
+        font2.setWeight(75);
+        font2.setKerning(true);
+        scoreTable->setFont(font2);
+        scoreTable->setStyleSheet(QStringLiteral("background-color:rgb(68, 108, 64)"));
+        scoreTable->setFrameShape(QFrame::NoFrame);
         scoreTable->setLineWidth(4);
         scoreTable->setSizeAdjustPolicy(QAbstractScrollArea::AdjustIgnored);
         scoreTable->setAutoScrollMargin(16);

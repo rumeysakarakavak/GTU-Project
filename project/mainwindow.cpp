@@ -31,8 +31,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->startButton->setIcon(QIcon(":/images/images/play-button.png"));
     ui->startButton->setCheckable(true);
-    socket = new QTcpSocket(this);
-    socket->connectToHost(QHostAddress("127.0.0.1"), 5051);
+    this->Connect();
 
     scence = new QGraphicsScene(this);
     ui->graphicsView->setScene(scence);
@@ -246,38 +245,29 @@ void MainWindow::on_scoresButton_clicked()
     scores.exec();
 }
 
-void MainWindow ::Connect() {
+
+void MainWindow::Connect() {
+
+    socket = new QTcpSocket(this);
+    socket->connectToHost(QHostAddress("127.0.0.1"), 5051);
+
+}
+
+void MainWindow::Write() {
+
     if(socket->waitForConnected()) {
-           socket->write(this->command.toUtf8().constData());
-           socket->waitForBytesWritten();
-
-           /*
-           // add if client reads from server
-           socket->waitForReadyRead(3000);
-           //qDebug() << "Reading from server: " << socket->bytesAvailable();
-           //qDebug() << socket->readAll();*/
-
-       }
+        socket->write(this->command.toUtf8().constData());
+        socket->waitForBytesWritten();
+    }
 }
 
 
-/*void MainWindow::on_startButton_toggled(bool checked)
-{
-    if(checked) {
-        ui->startButton->setIcon(QIcon(":/images/pause-icon.png"));
-        this->command = "SYSTEM_START";
-    }
-    else {
-        ui->startButton->setIcon(QIcon(":/images/play-button.png"));
-        this->command = "SYSTEM_RESUME";
-    }
-    this->Connect();
-}
-*/
+
+
 void MainWindow::on_stopButton_clicked()
 {
     this->command = "STOP";
-    this->Connect();
+    this->Write();
     socket->close();
     //this->close();
 }
@@ -294,7 +284,7 @@ void MainWindow::on_startButton_toggled(bool checked)
         ui->startButton->setIcon(QIcon(":/images/images/play-button.png"));
         this->command = "RESUME";
     }
-    this->Connect();
+    this->Write();
 
 
 }

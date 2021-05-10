@@ -42,6 +42,8 @@ public:
     int getComputerScore();
     int getTeamScore();
     int getLevel();
+    void Connect();
+    void Write();
 
 
 
@@ -54,8 +56,6 @@ private slots:
     void on_level_currentIndexChanged(int index);
 
     void on_scoresButton_clicked();
-
-    void Connect();
 
     void on_startButton_toggled(bool checked);
 
