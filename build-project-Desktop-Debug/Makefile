@@ -331,17 +331,17 @@ compiler_rcc_make_all: qrc_resources.cpp
 compiler_rcc_clean:
 	-$(DEL_FILE) qrc_resources.cpp
 qrc_resources.cpp: ../project/resources.qrc \
-		../project/images/scores.png \
+		../project/images/logo.png \
+		../project/images/background.PNG \
+		../project/images/play-button.png \
+		../project/images/stopp.png \
+		../project/images/langirt.PNG \
+		../project/images/ip.png \
+		../project/images/pause-icon.png \
 		../project/images/computer.png \
 		../project/images/struggle.png \
 		../project/images/team8.png \
-		../project/images/langirt.PNG \
-		../project/images/play-button.png \
-		../project/images/logo.png \
-		../project/images/background.PNG \
-		../project/images/ip.png \
-		../project/images/stopp.png \
-		../project/images/pause-icon.png
+		../project/images/scores.png
 	/usr/lib/i386-linux-gnu/qt5/bin/rcc -name resources ../project/resources.qrc -o qrc_resources.cpp
 
 compiler_moc_header_make_all: moc_mainwindow.cpp moc_scoresdialog.cpp moc_moveitem.cpp moc_renderarea.cpp
